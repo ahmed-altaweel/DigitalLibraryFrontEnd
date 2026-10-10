@@ -1,0 +1,7 @@
+.pagination { display: flex; align-items: center; justify-content: center; gap: var(--space-1); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 var(--space-2); border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-sm); cursor: pointer; color: var(--color-text); font-size: var(--text-sm); transition: all var(--transition-fast); }
+.btn:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+.active:hover:not(:disabled) { background: var(--color-primary); color: white; }
+.dots { border: none; background: transparent; cursor: default; }

@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset -2px 0 6px rgba(0, 0, 0, 0.15); /* Subtle spine shadow */
+  border-inline-start: 4px solid rgba(0, 0, 0, 0.25); /* Book spine indication */
+  user-select: none;
+}
+
+.topPattern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.typeTag {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.typeIcon {
+  opacity: 0.85;
+}
+
+.titleArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+}
+
+.scholarlyRule {
+  width: 40px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.titleText {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  color: inherit;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.bottomWatermark {
+  display: flex;
+  justify-content: center;
+}
+
+.libraryStamp {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  font-weight: var(--font-semibold);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* Category-coded scholarly tints */
+.bookAccent {
+  background: linear-gradient(135deg, #1C3144 0%, #101E2B 100%);
+  color: #F8F5EE;
+}
+
+.paperAccent {
+  background: linear-gradient(135deg, #2D4030 0%, #1A271C 100%);
+  color: #EDF3ED;
+}
+
+.articleAccent {
+  background: linear-gradient(135deg, #4A3B32 0%, #2E241E 100%);
+  color: #F8F3ED;
+}
+
+.manuscriptAccent {
+  background: linear-gradient(135deg, #4F3824 0%, #312114 100%);
+  color: #FDF9EE;
+}
+
+.dissertationAccent {
+  background: linear-gradient(135deg, #322D4D 0%, #1D1A2E 100%);
+  color: #F1EFF8;
+}
+
+.defaultAccent {
+  background: linear-gradient(135deg, #2A3644 0%, #17202B 100%);
+  color: #F6F8FA;
+}

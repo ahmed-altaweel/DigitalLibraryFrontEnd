@@ -1,0 +1,158 @@
+.reader {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+}
+
+.centerScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: var(--color-bg);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding-inline: var(--space-4);
+  gap: var(--space-4);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+  flex: 1;
+}
+
+.toolBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.toolBtn:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.toolBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.materialTitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+}
+
+.centerNav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.jumpForm {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.pageInput {
+  width: 44px;
+  height: 30px;
+  text-align: center;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  outline: none;
+}
+
+.pageInput:focus {
+  border-color: var(--color-border-focus);
+}
+
+.pageDivider {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.totalPages {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.bookmarkBtn {
+  color: var(--color-accent);
+}
+
+.canvasArea {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--space-8) var(--space-4);
+  background: var(--color-bg-secondary);
+}
+
+.canvasContainer {
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  overflow: hidden;
+  transition: transform var(--transition-fast);
+}
+
+.pdfCanvas {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .materialTitle {
+    display: none;
+  }
+}

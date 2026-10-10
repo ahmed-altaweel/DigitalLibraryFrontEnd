@@ -1,0 +1,9 @@
+.container { width: 100%; overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.table { width: 100%; border-collapse: collapse; text-align: left; }
+.table th, .table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); }
+.table th { background: var(--color-bg-secondary); font-weight: var(--font-semibold); font-size: var(--text-sm); color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.table tr:last-child td { border-bottom: none; }
+.table tbody tr:hover { background: var(--color-surface-hover); }
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { color: var(--color-text); }
+.thContent { display: flex; align-items: center; gap: var(--space-1); }

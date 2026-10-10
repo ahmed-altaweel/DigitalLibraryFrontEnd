@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding-block-end: var(--space-6);
+}
+
+.titleArea h1 {
+  font-family: var(--font-serif);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.titleArea p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin: 0;
+}
+
+.createBar {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  max-width: 600px;
+}
+
+.searchBar {
+  max-width: 400px;
+}
+
+.tagCloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.tagCard {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: var(--space-2) var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  transition: all var(--transition-fast);
+}
+
+.tagCard:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(26, 47, 76, 0.04);
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteBtn:hover {
+  color: var(--color-error);
+  background-color: rgba(217, 83, 79, 0.1);
+}

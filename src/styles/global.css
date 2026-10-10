@@ -1,0 +1,111 @@
+@import './reset.css';
+@import './tokens.css';
+
+/* ==========================================================================
+   Global Base Styles
+   ========================================================================== */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Arabic typography overrides */
+[lang='ar'] body,
+[lang='ar'] {
+  font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', var(--font-sans);
+}
+
+[lang='ar'] h1,
+[lang='ar'] h2,
+[lang='ar'] h3,
+[lang='ar'] h4,
+[lang='ar'] h5,
+[lang='ar'] h6 {
+  font-family: 'Amiri', 'Noto Naskh Arabic', var(--font-serif);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-primary);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+}
+
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] h4,
+[data-theme='dark'] h5,
+[data-theme='dark'] h6 {
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+h5 { font-size: var(--text-base); }
+h6 { font-size: var(--text-sm); }
+
+/* Scholarly reading length restriction */
+.reading-text {
+  max-inline-size: var(--container-reading);
+  line-height: var(--leading-relaxed);
+}
+
+/* ==========================================================================
+   RTL Directional Icon Mirroring
+   ========================================================================== */
+[dir='rtl'] .mirror-rtl {
+  transform: scaleX(-1);
+}
+
+/* Skip to Content Accessible Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  inset-inline-start: var(--space-4);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  z-index: var(--z-tooltip);
+  font-weight: var(--font-medium);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ==========================================================================
+   Scrollbars
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-hover);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-primary);
+}
