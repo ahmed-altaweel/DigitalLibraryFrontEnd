@@ -25,8 +25,9 @@ export default function AuthorPage() {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ['materials', 'author', slug],
-    queryFn: () => materialsApi.getAll({ page: 1, size: 12, status: 'published' }),
+    queryKey: ['materials', 'author', author?.id || slug],
+    queryFn: () => materialsApi.getAll({ author_id: author?.id, page: 1, size: 12, status: 'published' }),
+    enabled: Boolean(author?.id || slug),
   });
 
   const materials = materialsData?.items || [];
@@ -36,7 +37,7 @@ export default function AuthorPage() {
       <Breadcrumb
         items={[
           { label: t('nav.home'), href: '/' },
-          { label: t('nav.authors'), href: '/catalog' },
+          { label: t('nav.authors'), href: '/authors' },
           { label: author?.name || slug },
         ]}
       />

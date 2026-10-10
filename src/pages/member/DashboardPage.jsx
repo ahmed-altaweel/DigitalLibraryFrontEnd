@@ -9,7 +9,8 @@ import {
   ArrowRight,
   ListOrdered,
   FileEdit,
-  Play
+  Play,
+  UploadCloud
 } from 'lucide-react';
 import { libraryApi, readingListsApi, readingProgressApi, bookmarksApi } from '../../services/api.js';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -53,13 +54,20 @@ export default function DashboardPage() {
     <div style={{ maxWidth: 'var(--container-max)', marginInline: 'auto', display: 'flex', gap: 'var(--space-8)', padding: 'var(--space-6) var(--space-4) var(--space-16)' }}>
       <Sidebar />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ marginBottom: 'var(--space-6)' }}>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-2xl)', color: 'var(--color-primary)', margin: 0 }} dir="auto">
-            {t('nav.dashboard')} — {user?.full_name || user?.username}
-          </h1>
-          <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', margin: 'var(--space-1) 0 0' }}>
-            {t('common.appTagline')}
-          </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-6)', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
+          <div>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-2xl)', color: 'var(--color-primary)', margin: 0 }} dir="auto">
+              {t('nav.dashboard')} — {user?.full_name || user?.username}
+            </h1>
+            <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', margin: 'var(--space-1) 0 0' }}>
+              {t('common.appTagline')}
+            </p>
+          </div>
+          <Link to="/upload" style={{ textDecoration: 'none' }}>
+            <Button variant="primary" size="md" iconLeft={<UploadCloud size={18} />}>
+              {t('admin.newMaterial') || '+ إيداع مادة علمية'}
+            </Button>
+          </Link>
         </div>
 
         {/* Real Stats Grid */}

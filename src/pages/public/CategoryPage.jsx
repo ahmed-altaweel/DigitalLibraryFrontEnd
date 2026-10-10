@@ -30,8 +30,9 @@ export default function CategoryPage() {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ['materials', 'category', slug, page],
-    queryFn: () => materialsApi.getAll({ page, size: 12, status: 'published' }),
+    queryKey: ['materials', 'category', category?.id || slug, page],
+    queryFn: () => materialsApi.getAll({ category_id: category?.id, page, size: 12, status: 'published' }),
+    enabled: Boolean(category?.id || slug),
   });
 
   const materials = materialsData?.items || [];
@@ -42,7 +43,7 @@ export default function CategoryPage() {
       <Breadcrumb
         items={[
           { label: t('nav.home'), href: '/' },
-          { label: t('nav.categories'), href: '/catalog' },
+          { label: t('nav.categories'), href: '/categories' },
           { label: category?.name || slug },
         ]}
       />

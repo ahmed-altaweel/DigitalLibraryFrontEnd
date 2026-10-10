@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { BookOpen, X, SlidersHorizontal, AlertCircle } from 'lucide-react';
+import { BookOpen, X, SlidersHorizontal, AlertCircle, UploadCloud } from 'lucide-react';
 import { materialsApi, categoriesApi } from '../../services/api.js';
 import { useTranslation } from '../../i18n/index.jsx';
 import MaterialGrid from '../../components/catalog/MaterialGrid/MaterialGrid.jsx';
@@ -17,6 +17,7 @@ const CONTENT_TYPES = ['book', 'paper', 'article', 'manuscript'];
 
 export default function CatalogPage() {
   const { t, language } = useTranslation();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const page = parseInt(searchParams.get('page') || '1', 10);
@@ -96,10 +97,18 @@ export default function CatalogPage() {
             <h1 className={styles.title}>{t('catalog.title')}</h1>
             <p className={styles.subtitle}>{t('catalog.subtitle')}</p>
           </div>
-          <div className={styles.countBadge}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
             <Badge variant="accent" size="md">
               {t('catalog.resultsFound', { count: formattedTotal })}
             </Badge>
+            <Button
+              variant="primary"
+              size="sm"
+              iconLeft={<UploadCloud size={16} />}
+              onClick={() => navigate('/upload')}
+            >
+              {language === 'ar' ? '+ إيداع ورفع مادة' : '+ Deposit Material'}
+            </Button>
           </div>
         </div>
 

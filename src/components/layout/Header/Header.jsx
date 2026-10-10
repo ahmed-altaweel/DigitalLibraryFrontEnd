@@ -17,7 +17,8 @@ import {
   Globe,
   Sun,
   Moon,
-  BookMarked
+  BookMarked,
+  UploadCloud
 } from 'lucide-react';
 import { useAuth } from '../../../context/AuthContext.jsx';
 import { useTranslation } from '../../../i18n/index.jsx';
@@ -82,6 +83,8 @@ export default function Header() {
             <nav className={styles.desktopNav} aria-label="Main Navigation">
               <Link to="/" className={styles.navLink}>{t('nav.home')}</Link>
               <Link to="/catalog" className={styles.navLink}>{t('nav.catalog')}</Link>
+              <Link to="/categories" className={styles.navLink}>{t('nav.categories')}</Link>
+              <Link to="/authors" className={styles.navLink}>{t('nav.authors')}</Link>
               {isAuthenticated && (
                 <Link to="/library" className={styles.navLink}>{t('nav.myLibrary')}</Link>
               )}

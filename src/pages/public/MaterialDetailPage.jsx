@@ -13,7 +13,8 @@ import {
   ShieldCheck,
   ExternalLink,
   Share2,
-  FileCode
+  FileCode,
+  ListOrdered
 } from 'lucide-react';
 import { materialsApi, libraryApi, assetsApi } from '../../services/api.js';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -27,6 +28,8 @@ import Skeleton from '../../components/common/Skeleton/Skeleton.jsx';
 import EmptyState from '../../components/common/EmptyState/EmptyState.jsx';
 import MaterialCard from '../../components/catalog/MaterialCard/MaterialCard.jsx';
 import SuggestCorrectionModal from '../../features/suggestions/SuggestCorrectionModal.jsx';
+import CitationModal from '../../features/citations/CitationModal.jsx';
+import AddToReadingListModal from '../../features/library/AddToReadingListModal.jsx';
 import styles from './MaterialDetailPage.module.css';
 
 export default function MaterialDetailPage() {
@@ -38,6 +41,28 @@ export default function MaterialDetailPage() {
   const queryClient = useQueryClient();
 
   const [suggestModalOpen, setSuggestModalOpen] = useState(false);
+  const [citationModalOpen, setCitationModalOpen] = useState(false);
+  const [readingListModalOpen, setReadingListModalOpen] = useState(false);
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: material?.title,
+          url: window.location.href,
+        });
+      } catch {
+        // Ignored
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success(language === 'ar' ? 'تم نسخ الرابط إلى الحافظة' : 'Link copied to clipboard');
+      } catch {
+        toast.error(language === 'ar' ? 'تعذر نسخ الرابط' : 'Failed to copy link');
+      }
+    }
+  };
 
   // 1. Fetch Material Detail
   const {
@@ -316,6 +341,41 @@ export default function MaterialDetailPage() {
               {isSavedInLibrary ? t('material.inLibrary') : t('material.addToLibrary')}
             </Button>
 
+            {/* Add to Reading List */}
+            {isAuthenticated && (
+              <Button
+                fullWidth
+                variant="outline"
+                size="md"
+                iconLeft={<ListOrdered size={18} />}
+                onClick={() => setReadingListModalOpen(true)}
+              >
+                {language === 'ar' ? 'إضافة إلى قائمة قراءة' : 'Add to Reading List'}
+              </Button>
+            )}
+
+            {/* Academic Citation Generator */}
+            <Button
+              fullWidth
+              variant="outline"
+              size="md"
+              iconLeft={<FileCode size={18} />}
+              onClick={() => setCitationModalOpen(true)}
+            >
+              {language === 'ar' ? 'توليد الاستشهاد الأكاديمي' : 'Cite Resource'}
+            </Button>
+
+            {/* Share Link */}
+            <Button
+              fullWidth
+              variant="ghost"
+              size="sm"
+              iconLeft={<Share2 size={16} />}
+              onClick={handleShare}
+            >
+              {language === 'ar' ? 'مشاركة المادة' : 'Share Resource'}
+            </Button>
+
             {/* Suggest Correction Flow */}
             {isAuthenticated && (
               <Button
@@ -351,6 +411,20 @@ export default function MaterialDetailPage() {
         isOpen={suggestModalOpen}
         onClose={() => setSuggestModalOpen(false)}
         material={material}
+      />
+
+      {/* Citation Generator Modal */}
+      <CitationModal
+        isOpen={citationModalOpen}
+        onClose={() => setCitationModalOpen(false)}
+        material={material}
+      />
+
+      {/* Add To Reading List Modal */}
+      <AddToReadingListModal
+        isOpen={readingListModalOpen}
+        onClose={() => setReadingListModalOpen(false)}
+        materialId={material.id}
       />
     </div>
   );
